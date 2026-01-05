@@ -3,3 +3,5 @@ card - text about a question - <div>
 card - left and right button
 
 progress bar - <div>
+
+pre made flashcards and then cycle through them one being a answers one - array.forEach() - generate html - <div>
