@@ -23,7 +23,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: #333;
   font-weight: bold;
   background: white; /* ensures visibility */
@@ -35,16 +35,19 @@ body {
 .card-2 {
   z-index: 1;
   transform: translate(16px, 16px) rotate(-2deg);
+  background-color: purple;
 }
 
 .card-1 {
   z-index: 2;
   transform: translate(8px, 8px) rotate(1deg);
+  background-color: green;
 }
 
 .card-0 {
   z-index: 3;
   transform: translate(0, 0);
+  background-color: yellow;
 }
 
 /* FIX 2: target an existing class instead of .front */
