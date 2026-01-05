@@ -16,18 +16,14 @@ const questionDetails = [{
   question: 'What is 3 + 1?'
 }];
 
-questionDetails.forEach((question) => {
-  const div = document.createElement('div');
-
-  div.textContent = question.title
-
-  questions.push(div);
-});
-
 let html = '';
 
-questionDetails.forEach(question => {
-  html += `<div class="flashcard">${question.title}, ${question.question}</div>`;
+questionDetails.forEach((question, index) => {
+  html += `
+    <div class="card card-${index}">
+      ${question.title}, ${question.question}
+    </div>
+  `;
 });
 
 document.getElementById('main').innerHTML = html;

@@ -1,4 +1,12 @@
-body {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>testing</title>
+  
+  <style>
+    body {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,8 +15,7 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* FIX 1: .main → #main (matches your HTML id) */
-#main {
+.main {
   position: relative;
   width: 300px;
   height: 200px;
@@ -26,29 +33,42 @@ body {
   font-size: 1.5rem;
   color: #333;
   font-weight: bold;
-  background: white; /* ensures visibility */
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
 /* Stack effect */
-.card-2 {
+.back {
   z-index: 1;
   transform: translate(16px, 16px) rotate(-2deg);
 }
 
-.card-1 {
+.middle {
   z-index: 2;
   transform: translate(8px, 8px) rotate(1deg);
 }
 
-.card-0 {
+.front {
   z-index: 3;
   transform: translate(0, 0);
 }
 
-/* FIX 2: target an existing class instead of .front */
-#main:hover .card-0 {
+/* Hover effect for fun */
+.main:hover .front {
   transform: translate(0, -10px) rotate(0deg);
   box-shadow: 0 12px 25px rgba(0,0,0,0.35);
 }
+
+  </style>
+</head>
+<body>
+  <div class="main">
+  
+    <div class="card back" style="background: #FFB6C1;">Back Card</div>
+  <div class="card middle" style="background: #87CEFA;">Middle Card</div>
+  <div class="card front" style="background: #FFD700;">Front Card</div>
+
+</div>
+
+</body>
+</html>
