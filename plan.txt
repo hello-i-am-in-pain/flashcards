@@ -1,0 +1,5 @@
+card - option to show answer - button element
+card - text about a question - <div>
+card - left and right button
+
+progress bar - <div>
