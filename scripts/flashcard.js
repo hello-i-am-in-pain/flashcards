@@ -1,5 +1,3 @@
-import { questions, answers } from "./mainArrayHolder.js";
-
 const questionDetails = [{
   title: 'Math Questions',
   question: 'What is 1 + 1?'
