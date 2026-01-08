@@ -1,55 +1,108 @@
+/* GOAT Flashcards - Simple & Clean Edition */
+
+:root {
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --card-white: #ffffff;
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0;
   height: 100vh;
-  background: rgb(82, 82, 230);
-  font-family: Arial, sans-serif;
-}
-
-
-#main {
-  position: relative;
-  width: 300px;
-  height: 200px;
-  cursor: pointer;
-}
-
-/* Base style for all cards */
-.card {
-  position: absolute;
-  inset: 0;
-  border-radius: 15px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  font-size: 1rem;
-  color: #333;
-  font-weight: bold;
-  background: white; /* ensures visibility */
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  transition: transform 0.3s, box-shadow 0.3s;
+  justify-content: center;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text-main);
+  overflow: hidden;
 }
 
-.card-2 {
-  /* z-index: 1;
-  transform: translate(16px, 16px) rotate(-2deg); */
-  background-color: purple;
+/* Card Container */
+#main {
+  width: min(500px, 90vw);
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.card-1 {
-  /* z-index: 2;
-  transform: translate(8px, 8px) rotate(1deg); */
-  background-color: green;
+/* The Card - With Entry Animation */
+.card {
+  background: var(--card-white);
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+  /* This animation runs whenever the JS re-renders the div */
+  animation: cardEnter 0.4s ease-out forwards;
 }
 
-.card-0 {
-  /* z-index: 3;
-  transform: translate(0, 0); */
-  background-color: yellow;
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
-#main:hover .card-0 {
-  transform: translate(0, -10px) rotate(0deg);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.35);
+.card-title {
+  color: var(--primary);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.card-question {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Scroll Buttons */
+.scroll-button {
+  position: fixed;
+  bottom: 50px;
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: none;
+  background: var(--card-white);
+  color: var(--primary);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: all 0.2s ease;
+}
+
+.scroll-button:hover {
+  transform: translateY(-3px);
+  background: #f9fafb;
+}
+
+.scroll-button:active {
+  transform: translateY(-1px);
+}
+
+.js-scroll-left { left: 40px; }
+.js-scroll-right { right: 40px; }
+
+.progress-bar {
+  scale: 2;
 }

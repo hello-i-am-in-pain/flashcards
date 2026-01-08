@@ -21,8 +21,12 @@ function renderCard() {
   const questionIndexArray = questionDetails[currentCardIndex];
 
   document.getElementById('main').innerHTML = `
-    <div class="card card-${currentCardIndex}">
-      ${questionIndexArray.title}, ${questionIndexArray.question}
+    <div class="card">
+      <div class="accent-strip"></div>
+      <div class="card-inner">
+        <div class="card-title">${questionIndexArray.title}</div>
+        <div class="card-question">${questionIndexArray.question}</div>
+      </div>
     </div>
   `;
 }
