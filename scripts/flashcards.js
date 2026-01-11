@@ -1,38 +1,40 @@
-alert('hello');
+import "./openModal.js";
 
-const questionDetails = [{
-  title: 'Math Questions',
-  question: 'What is 1 + 1?',
-  answer: '2',
-  meterValue: 33
-},
+const questionDetails = [
+  {
+    title: "Math Questions",
+    question: "What is 1 + 1?",
+    answer: "2",
+    meterValue: 33,
+  },
 
-{
-  title: 'Math Questions',
-  question: 'What is 2 + 1?',
-  answer: '3',
-  meterValue: 66
-},
+  {
+    title: "Math Questions",
+    question: "What is 2 + 1?",
+    answer: "3",
+    meterValue: 66,
+  },
 
-{
-  title: 'Math Questions',
-  question: 'What is 3 + 1?',
-  answer: '4',
-  meterValue: 100
-}];
+  {
+    title: "Math Questions",
+    question: "What is 3 + 1?",
+    answer: "4",
+    meterValue: 100,
+  },
+];
 
 let currentCardIndex = 0;
-const meterId = document.getElementById('progress-bar');
+const meterId = document.getElementById("progress-bar");
 
 renderCard();
 
 function calculateAnswer() {
-  let optionNerd = document.getElementById('option-selector');
+  let optionNerd = document.getElementById("option-selector");
   let selectedValue = optionNerd.value;
   let answer = questionDetails[currentCardIndex].answer;
 
-  if (selectedValue === '') {
-    console.log('NO VALUE INPUTTED!') 
+  if (selectedValue === "") {
+    console.log("NO VALUE INPUTTED!");
     return; //eject button
   }
 
@@ -42,14 +44,13 @@ function calculateAnswer() {
   } else {
     console.log(`❌ ${selectedValue} is wrong. Try again!`);
   }
-  addEventListener('change', calculateAnswer);
+  addEventListener("change", calculateAnswer);
 }
-
 
 function renderCard() {
   const questionIndexArray = questionDetails[currentCardIndex];
 
-  document.getElementById('main').innerHTML = `
+  document.getElementById("main").innerHTML = `
     <div class="card">
       <div class="accent-strip"></div>
       <div class="card-inner">
@@ -67,15 +68,15 @@ function renderCard() {
       </div>
     </div>
   `;
-  document.getElementById('option-selector').addEventListener('change', calculateAnswer);
+  document
+    .getElementById("option-selector")
+    .addEventListener("change", calculateAnswer);
 }
 
+const leftButton = document.querySelector(".js-scroll-left");
+const rightButton = document.querySelector(".js-scroll-right");
 
-const leftButton = document.querySelector('.js-scroll-left');
-const rightButton = document.querySelector('.js-scroll-right');
-
-
-leftButton.addEventListener('click', () => {
+leftButton.addEventListener("click", () => {
   currentCardIndex--;
 
   if (currentCardIndex < 0) {
@@ -85,7 +86,7 @@ leftButton.addEventListener('click', () => {
   renderCard();
 });
 
-rightButton.addEventListener('click', () => {
+rightButton.addEventListener("click", () => {
   currentCardIndex++;
 
   if (currentCardIndex >= questionDetails.length) {
@@ -94,3 +95,35 @@ rightButton.addEventListener('click', () => {
 
   renderCard();
 });
+
+const openModalButtons = document.querySelectorAll("[data-modal-target]");
+
+const closeModalButtons = document.querySelectorAll("[data-close-button]");
+
+const overlay = document.getElementById("overlay");
+
+openModalButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const modal = document.querySelector(button.dataset.modalTarget);
+    openModal(modal);
+  });
+});
+
+closeModalButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const modal = button.closest(".modal");
+    closeModal(modal);
+  });
+});
+
+function openModal(modal) {
+  if (modal === null) return;
+  modal.classList.add("active");
+  overlay.classList.add("active");
+}
+
+function closeModal(modal) {
+  if (modal === null) return;
+  modal.classList.remove("active");
+  overlay.classList.remove("active");
+}
