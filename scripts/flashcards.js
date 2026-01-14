@@ -23,28 +23,30 @@ const questionDetails = [
   },
 ];
 
-let currentCardIndex = 0;
-const meterId = document.getElementById("progress-bar");
+// let registerEventClicks = 0;
 
 renderCard();
 
 function calculateAnswer() {
   let optionNerd = document.getElementById("option-selector");
   let selectedValue = optionNerd.value;
-  let answer = questionDetails[currentCardIndex].answer;
 
   if (selectedValue === "") {
-    console.log("NO VALUE INPUTTED!");
+    alert("NO VALUE INPUTTED!");
     return; //eject button
   }
 
-  if (selectedValue === answer) {
+  // if ((registerEventClicks = 4)) {
+  //   meterId.value = 0;
+  //   registerEventClicks = 0;
+  // } else {}
+
+  if (selectedValue === answer /* && registerEventClicks < 4 */) {
     meterId.value = questionDetails[currentCardIndex].meterValue;
-    console.log(`✅ ${selectedValue} is CORRECT!`);
+    alert(`✅ ${selectedValue} is CORRECT!`);
   } else {
-    console.log(`❌ ${selectedValue} is wrong. Try again!`);
+    alert(`❌ ${selectedValue} is wrong. Try again!`);
   }
-  addEventListener("change", calculateAnswer);
 }
 
 function renderCard() {
@@ -64,6 +66,13 @@ function renderCard() {
           <option value="3">3</option>
           <option value="4">4</option>
         </select>
+
+        <button popovertarget="my-popover">Click for Answer!</button>
+
+        <div id="my-popover" popover>
+          <p>${answer}</p>
+        </div>
+
         </div>
       </div>
     </div>
@@ -78,20 +87,26 @@ const rightButton = document.querySelector(".js-scroll-right");
 
 leftButton.addEventListener("click", () => {
   currentCardIndex--;
+  // registerEventClicks++;
 
   if (currentCardIndex < 0) {
     currentCardIndex = questionDetails.length - 1;
   }
+
+  answer = questionDetails[currentCardIndex].answer;
 
   renderCard();
 });
 
 rightButton.addEventListener("click", () => {
   currentCardIndex++;
+  // registerEventClicks++;
 
   if (currentCardIndex >= questionDetails.length) {
     currentCardIndex = 0;
   }
+
+  answer = questionDetails[currentCardIndex].answer;
 
   renderCard();
 });

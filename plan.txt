@@ -5,3 +5,5 @@ card - left and right button
 progress bar - <div>
 
 pre made flashcards and then cycle through them one being a answers one - array.forEach() - generate html - <div>
+
+NOTE: PLAN WAS NEVER FINALISED TEXT HERE MAY NOT REFLECT WHAT IS ACTUALLY WRITTEN.
