@@ -1,6 +1,18 @@
 # flashcards
 
-This template should help get you started developing with Vue 3 in Vite.
+The goal of this project was to create a Flashcards Project. I first completed it in Vanilla JS and chose Vue.js as a frontend framework.
+
+## Requirements
+
+You are required to develop a flash cards app with the following features:
+
+    Pre-defined flashcards with questions and answers
+
+    Progress bar to show the user's progress
+
+    Ability to view flashcards one at a time and flip to reveal the answer
+
+    Simple navigation to cycle through the flashcards
 
 ## Recommended IDE Setup
 
@@ -36,3 +48,7 @@ npm run dev
 ```sh
 npm run build
 ```
+
+Big thanks to roadmap.sh for giving me some guidelines and the inspiration to complete this project to further develop my JavaScript and Frontend Skills.
+
+https://roadmap.sh/projects/flash-cards

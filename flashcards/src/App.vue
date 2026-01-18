@@ -1,47 +1,55 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { ref } from 'vue'
+import Header from '@/components/Header.vue'
+import Main from '@/components/Main.vue'
+
+const questionDetails = ref([
+  {
+    title: 'Math Questions',
+    question: 'What is 1 + 1?',
+    answer: '2',
+    meterValue: 33,
+  },
+
+  {
+    title: 'Math Questions',
+    question: 'What is 2 + 1?',
+    answer: '3',
+    meterValue: 66,
+  },
+
+  {
+    title: 'Math Questions',
+    question: 'What is 3 + 1?',
+    answer: '4',
+    meterValue: 100,
+  },
+])
+
+let currentCardIndex = ref(0)
+
+const cardRight = () => {
+  if (currentCardIndex.value < questionDetails.value.length - 1) {
+    currentCardIndex.value++
+  } else {
+    currentCardIndex.value = 0 // Loop back
+  }
+}
+
+const cardLeft = () => {
+  if (currentCardIndex.value > 0) {
+    currentCardIndex.value--
+  } else {
+    currentCardIndex.value = questionDetails.value.length - 1 // Loop back
+  }
+}
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <div>
+    <Header :progress="currentCardIndex" />
+    <Main :card="questionDetails[currentCardIndex]" @card-right="cardRight" @cardLeft="cardLeft" />
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
+<style scoped></style>
