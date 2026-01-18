@@ -1,19 +1,26 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 const prop = defineProps({
   card: Object,
   progress: Number,
 })
 
-const emit = defineEmits(['cardRight', 'cardLeft'])
+const emit = defineEmits(['cardRight', 'cardLeft', 'answerCorrect', 'answerWrong', 'timesClicked'])
 
 const scrollBtnLeft = ref('Scroll Left')
 const scrollBtnRight = ref('Scroll Right')
 const modalClosedName = ref('Open Modal')
 const modalOpenedName = ref('Example Modal')
-const modalBodyTxt = ref('Lorem ipslum')
+const modalBodyTxt = ref('Tf why it aint workin')
 let selectedValue = ref('')
+
+watch(
+  () => prop.card,
+  () => {
+    selectedValue.value = ''
+  },
+)
 
 modalClosedName.value = 'Answer'
 
@@ -25,9 +32,11 @@ function calculate() {
 
   if (selectedValue.value === prop.card.answer) {
     // meterId.value = questionDetails[currentCardIndex].meterValue
-    alert(`✅ {{selectedValue}} is CORRECT!`)
+    alert(`✅ CORRECT!`)
+    emit('answerCorrect')
   } else {
-    alert(`❌ {{selectedValue}} is wrong. Try again!`)
+    alert(`❌ Try again!`)
+    emit('answerWrong')
   }
 }
 </script>
@@ -42,7 +51,7 @@ function calculate() {
         <div class="card-title">{{ prop.card.title }}</div>
         <div class="card-question">{{ prop.card.question }}</div>
         <div>
-          <select name="math-answers" v-model="selectedValue">
+          <select name="math-answers" @change="calculate" v-model="selectedValue">
             <option value="">Select Your Answer</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -59,11 +68,23 @@ function calculate() {
       </div>
     </div>
 
-    <button @click="emit('cardLeft')" @change="calculate" class="js-scroll-left scroll-button">
+    <button
+      @click="
+        emit('cardLeft');
+        emit('timesClicked');
+      "
+      class="js-scroll-left scroll-button"
+    >
       {{ scrollBtnLeft }}
     </button>
 
-    <button @click="emit('cardRight')" @change="calculate" class="js-scroll-right scroll-button">
+    <button
+      @click="
+        emit('cardRight');
+        emit('timesClicked');
+      "
+      class="js-scroll-right scroll-button"
+    >
       {{ scrollBtnRight }}
     </button>
 
