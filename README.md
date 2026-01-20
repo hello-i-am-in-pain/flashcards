@@ -1,6 +1,11 @@
-# flashcards
+# 🗂️ Flashcards Project
 
-The goal of this project was to create a Flashcards Project. I first completed it in Vanilla JS and chose Vue.js as a frontend framework.
+A reactive flashcards application built to master the transition from Vanilla JavaScript to **Vue.js**. This project features a clean UI, progress tracking, and interactive study tools.
+
+## Frameworks Used
+
+- Vue.js
+- Vite
 
 ## Requirements
 
@@ -31,23 +36,37 @@ You are required to develop a flash cards app with the following features:
 
 See [Vite Configuration Reference](https://vite.dev/config/).
 
-## Project Setup
+## 🚀 Getting Started
+
+To experiment locally, follow these steps:
+
+1. **Clone the Repository**
+
+```sh
+git clone [https://github.com/hello-i-am-in-pain/flashcards.git](https://github.com/hello-i-am-in-pain/flashcards.git)
+```
+
+2. **Install npm (Can use npm i)**
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+2. **Compile and hot reload for development**
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+3. **Compile and Minify for Production**
 
 ```sh
 npm run build
 ```
+
+## Picture
+
+<img src="/flashcards/src/assets/flashcards_img_1.png">
 
 Big thanks to roadmap.sh for giving me some guidelines and the inspiration to complete this project to further develop my JavaScript and Frontend Skills.
 

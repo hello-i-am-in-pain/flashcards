@@ -6,13 +6,11 @@ const prop = defineProps({
   progress: Number,
 })
 
-const emit = defineEmits(['cardRight', 'cardLeft', 'answerCorrect', 'answerWrong', 'timesClicked'])
+const emit = defineEmits(['cardRight', 'cardLeft', 'answerCorrect', 'answerWrong', 'restart'])
 
 const scrollBtnLeft = ref('Scroll Left')
 const scrollBtnRight = ref('Scroll Right')
 const modalClosedName = ref('Open Modal')
-const modalOpenedName = ref('Example Modal')
-const modalBodyTxt = ref('Tf why it aint workin')
 let selectedValue = ref('')
 
 watch(
@@ -68,37 +66,15 @@ function calculate() {
       </div>
     </div>
 
-    <button
-      @click="
-        emit('cardLeft');
-        emit('timesClicked');
-      "
-      class="js-scroll-left scroll-button"
-    >
+    <button @click="emit('cardLeft')" class="js-scroll-left scroll-button">
       {{ scrollBtnLeft }}
     </button>
 
-    <button
-      @click="
-        emit('cardRight');
-        emit('timesClicked');
-      "
-      class="js-scroll-right scroll-button"
-    >
+    <button @click="emit('cardRight')" class="js-scroll-right scroll-button">
       {{ scrollBtnRight }}
     </button>
 
-    <button data-modal-target="#modal">{{ modalClosedName }}</button>
-    <div class="modal" id="modal">
-      <div class="modal-header">
-        <div class="title">{{ modalOpenedName }}</div>
-        <button data-close-button class="close-button">&times;</button>
-      </div>
-      <div class="modal-body">
-        {{ modalBodyTxt }}
-      </div>
-    </div>
-    <div id="overlay"></div>
+    <button @click="emit('restart')">Restart</button>
   </main>
 </template>
 
