@@ -66,6 +66,8 @@ npm run build
 
 ## Picture
 
+I know it doesn't look amazing but I am not a CSS Wizz
+
 <img src="/flashcards/src/assets/flashcards_img_1.png">
 
 Big thanks to roadmap.sh for giving me some guidelines and the inspiration to complete this project to further develop my JavaScript and Frontend Skills.
